@@ -1,0 +1,31 @@
+{
+  "name": "spotify-randomiser",
+  "version": "1.0.0",
+  "description": "Create new playlist with shuffled content from existing playlist",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node scripts/dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomgarretty/spotify-randomiser.git"
+  },
+  "author": "tomgarretty@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomgarretty/spotify-randomiser/issues"
+  },
+  "homepage": "https://github.com/tomgarretty/spotify-randomiser#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^2.0.4",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "shuffle-array": "^1.0.1",
+    "spotify-web-api-node": "^4.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.1.0"
+  }
+}

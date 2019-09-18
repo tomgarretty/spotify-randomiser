@@ -1,0 +1,8 @@
+html
+body
+  if isAuthenticated
+    each playlist in playlists
+      form(action='/shuffle?id=' + playlist.id, method='POST')
+        input(type='submit' value='Shuffle ' + playlist.name)
+  else
+    a(class='button' href='/login') Authenticate with Spotify
