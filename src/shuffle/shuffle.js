@@ -1,5 +1,5 @@
-const spotify = require('./spotify')
-const shuffleArray = require('shuffle-array')
+const spotify = require('../spotify/spotify');
+const shuffleArray = require('shuffle-array');
 
 const MAX_AHEAD_TIME = 5 * 60 * 1000;
 
@@ -14,7 +14,7 @@ const getTracksByUser = tracks => {
     }
   });
   return tracksByUser;
-}
+};
 
 const getNextUser = (tracksByUser, durationsByUser) => {
   const usersWithTracks = Object.keys(tracksByUser)
@@ -23,9 +23,9 @@ const getNextUser = (tracksByUser, durationsByUser) => {
   const minDuration = Math.min(...durations);
   const validUsers = usersWithTracks
     .filter(user => durationsByUser[user] - minDuration <= MAX_AHEAD_TIME);
-  console.log(`Choosing between ${validUsers}`)
+  console.log(`Choosing between ${validUsers}`);
   return validUsers.length && validUsers[Math.floor(Math.random() * validUsers.length)]
-}
+};
 
 const getShuffledTracks = tracks => {
   const tracksByUser = getTracksByUser(tracks);

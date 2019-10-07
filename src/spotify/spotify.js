@@ -1,11 +1,11 @@
 const request = require('request-promise');
-const url = require('url')
+const url = require('url');
 
-const SPOTIFY_API_BASE = 'https://api.spotify.com/v1'
+const SPOTIFY_API_BASE = 'https://api.spotify.com/v1';
 
 const SPOTIFY_AUTH_HOST = 'accounts.spotify.com';
 const SPOTIFY_AUTH_PATH = 'authorize';
-const REDIRECT_URI = 'http://localhost:3000/authorise';
+const REDIRECT_URI = 'http://localhost:3000/api/spotify/authorise';
 const SCOPES = ['playlist-read-collaborative', 'playlist-read-private', 'playlist-modify-private', 'playlist-modify-public']
 
 const clientId = process.env.CLIENT_ID;
@@ -23,7 +23,7 @@ const getAuthorisationUrl = () => url.format({
     response_type: 'code',
     scope: SCOPES.join(' ')
   }
-})
+});
 
 const getUserId = () =>
   request.get({
@@ -32,7 +32,7 @@ const getUserId = () =>
       'Authorization': `Bearer ${accessToken}`
     },
     json: true
-  }).then(result => result.id)
+  }).then(result => result.id);
 
 const authorise = async code => {
   const data = await request.post({
@@ -48,13 +48,13 @@ const authorise = async code => {
       client_secret: clientSecret
     },
     json: true
-  })
+  });
 
   accessToken = data.access_token;
   userId = await getUserId();
-}
+};
 
-const isAuthenticated = () => !!accessToken
+const isAuthenticated = () => !!accessToken;
 
 const createPlaylist = name =>
   request.post({
@@ -79,7 +79,7 @@ const addTracks = (playlistId, uris) =>
       uris
     },
     json: true
-  })
+  });
 
 
 const addAllTracks = async (playlistId, uris) => {
